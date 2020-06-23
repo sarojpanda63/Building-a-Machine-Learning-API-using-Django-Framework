@@ -1,0 +1,130 @@
+{% extends "MyAPI/basic.html" %}
+{% block title %} Check your Status{% endblock %}
+{% block css %}
+.form-control{
+display: block;
+width: 15%;
+height: calc(1.5em + .75rem + 2px);
+padding: .375rem .75rem;
+font-size: 1rem;
+font-weight: 400;
+line-height: 1.5;
+color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: .25rem;
+transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.col-1 {
+-ms-flex: 0 0 8.333333%;
+flex: 1 0 8.333333%;
+max-width: 17.333333%;
+}
+.col-2 {
+-ms-flex: 0 0 16.666667%;
+flex: 0 0 16.666667%;
+max-width: 16.666667%;
+}
+{% endblock %}
+{% block body %}
+<h1>Check Status here{{x}}</h1>
+
+<div class="container">
+    <div class="form_container">
+        <form action="/status/" autocomplete="on" method="POST" id= 'myform' onsubmit="return validate_status_enq_form();">   {% csrf_token %}
+            <div class="row">
+                <div class="col-1 mandatory">First Name</div>
+                <div class="col-2"><input name="firstname" value="" type="text" id="firstname"></div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Last Name</div>
+                <div class="col-2"><input name="lastname" type="text" id="lastname"></div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Dependants</div>
+                <div class="col-2"><input name="dependants" type="text" id="dependants"></div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Applicant Income</div>
+                <div class="col-2"><input name="applicantincome" type="text" id="applicantincome"></div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Co-Applicant Income</div>
+                <div class="col-2"><input name="coapplicantincome" type="text" id="coapplicantincome"></div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Loan Ammount</div>
+                <div class="col-2"><input name="loanamount" type="text" id="loanamount"></div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Loan Term</div>
+                <div class="col-2"><input name="loanterm" type="text" id="loanterm"></div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Credit History</div>
+                <div class="col-2"><input name="credithistory" type="text" id="credithistory"></div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Gender</div>
+                <div class="col-2" >
+                    <select name="gender" type="text" id="gender" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Male</option><br>
+                        <option>Female</option><br>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Married</div>
+                <div class="col-2" >
+                    <select name="married" type="text" id="married" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Yes</option><br>
+                        <option>No</option><br>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Graduated</div>
+                <div class="col-2" >
+                    <select name="graduatededucation" type="text" id="graduatededucation" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Graduate</option><br>
+                        <option>Not_Graduate</option><br>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Self Employed</div>
+                <div class="col-2" >
+                    <select name="selfemployed" type="text" id="selfemployed" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Yes</option><br>
+                        <option>No</option><br>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1 mandatory">Area</div>
+                <div class="col-2">
+                    <select name="area" type="text" id="area" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Rural</option><br>
+                        <option>Semiurban</option><br>
+                        <option>Urban</option><br>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-2">
+                        <input name="submit_btn" type="submit" class="btn btn-primary" value="Check Status">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block js %}{% endblock %}
